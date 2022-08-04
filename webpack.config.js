@@ -1,3 +1,5 @@
+require('dotenv').config();
+// import Dotenv from 'dotenv-webpack';
 const prod = process.env.NODE_ENV === 'production';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -23,7 +25,7 @@ module.exports = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
-    ]
+    ],
   },
   devtool: prod ? undefined : 'source-map',
   plugins: [
@@ -31,5 +33,6 @@ module.exports = {
       template: 'index.html',
     }),
     new MiniCssExtractPlugin(),
+    // new Dotenv(),
   ],
 };
