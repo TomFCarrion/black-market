@@ -1,3 +1,5 @@
+require('dotenv').config();
+// import Dotenv from 'dotenv-webpack';
 const prod = process.env.NODE_ENV === 'production';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
