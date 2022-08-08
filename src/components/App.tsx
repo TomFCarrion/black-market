@@ -1,7 +1,11 @@
 import React from 'react';
-import LoginPage from '../../pages/LoginPage';
+
 const App = () => {
-  return <LoginPage />;
+  return (
+    <>
+      <h1>Black Market!</h1>,
+    </>
+  );
 };
 
 export default App;
