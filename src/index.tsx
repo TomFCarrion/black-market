@@ -1,12 +1,10 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './pages/App';
-import './index.css';
-const container = document.getElementById('app-root');
-const root = createRoot(container!);
+import { render } from 'react-dom';
+
+import App from './components/App';
 
 const renderApp = (Component: Function) => {
-  root.render(<Component />);
+  render(<Component />, document.getElementById('app-root'));
 };
 
 renderApp(App);
