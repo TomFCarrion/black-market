@@ -25,6 +25,13 @@ module.exports = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+      {
+        test: /\.(png|jpe?g|gif|jp2|webp)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+        },
+      },
     ],
   },
   devtool: prod ? undefined : 'source-map',
@@ -33,6 +40,5 @@ module.exports = {
       template: 'index.html',
     }),
     new MiniCssExtractPlugin(),
-    // new Dotenv(),
   ],
 };
