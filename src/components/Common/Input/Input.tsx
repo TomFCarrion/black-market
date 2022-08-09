@@ -9,30 +9,44 @@ export interface InputProps {
   placeholder?: string;
   error?: string;
   className?: string;
+  isRequired?: boolean;
+  disabled?: boolean;
 }
 
-const Input = ({ name, value, onChange, label, placeholder, error, className, type = 'text' }: InputProps) => {
+const Input = ({
+  name,
+  value,
+  onChange,
+  label,
+  placeholder,
+  error = 'test',
+  className,
+  type = 'text',
+  isRequired = false,
+  disabled = false,
+}: InputProps) => {
   return (
     <div className={'input-container'}>
       <div className="label-container">
         {label && (
           <label htmlFor={name} className={'input-label'}>
-            {label}
+            {label} {isRequired && '*'}
           </label>
         )}
       </div>
 
       <div>
         <input
-          className={'input'}
+          className={error ? 'input input-error' : 'input'}
           id={name}
           name={name}
           value={value}
           onChange={onChange}
           placeholder={placeholder}
           type={type}
+          disabled={disabled}
         />
-        {error && <div>{error}</div>}
+        {error && <div>{error}</div>} {/*TODO: add X Icon */}
       </div>
     </div>
   );
