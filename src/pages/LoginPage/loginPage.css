@@ -4,11 +4,12 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-color: black;
+    overflow: hidden;
 }
 
 .floatLeft{
     position: absolute;
-    top: 50%;  
-    left: 25%; 
-    transform: translate(-25%, -50%);
+    top: 34%;  
+    left: 0; 
+    transform: translate(34%, -40%);
 }
