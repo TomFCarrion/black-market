@@ -9,7 +9,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="login-page">
         <LoginForm onSubmit={loginRequest} customClass={'floatLeft'} />
       </div>
     </>

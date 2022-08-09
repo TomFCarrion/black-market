@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import './LoginForm.css';
-import Logo from '../../assets/Logo.png';
+import Logo from '../Common/Logo';
 import Input from '../Common/Input';
 import Button from '../Common/Button';
 
@@ -19,9 +19,10 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
     email: '',
     password: '',
   };
+
   return (
     <div className={`${customClass} loginForm-container`}>
-      <img className="logo" src={Logo} />
+      <Logo customClass="logo" size="l" />
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -30,14 +31,14 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
         validateOnMount={false}
       >
         {({ values, handleChange, handleSubmit, errors }) => (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="form">
             <div>
               <Input
                 name="email"
                 value={values.email}
                 error={errors.email}
                 onChange={handleChange}
-                placeholder="email"
+                placeholder="Type your email"
                 label="Email"
                 className="login-form-input"
               />
@@ -49,12 +50,13 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
                 error={errors.password}
                 onChange={handleChange}
                 type="password"
-                placeholder="********"
-                label="Contraseña"
+                placeholder="Type your password"
+                label="Password"
                 className="login-form-input"
               />
             </div>
-            <Button onClick={handleSubmit} title="Login" />
+            <Button onClick={handleSubmit} title="Log in" variant={'primary'} />
+            <Button onClick={handleSubmit} title="I forgot my password." variant={'outline'} />
           </form>
         )}
       </Formik>

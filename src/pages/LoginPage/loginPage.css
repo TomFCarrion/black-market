@@ -1,8 +1,9 @@
 
-.container {
+.login-page{
     background-image: url('../../assets/wallpaper.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: black;
 }
 
 .floatLeft{
