@@ -48,12 +48,7 @@ const Input = ({
           type={type}
           disabled={disabled}
         />
-        {error && (
-          <div>
-            <Icon />
-            {error}
-          </div>
-        )}
+        {error && <div>{error}</div>} {/*TODO: add X Icon */}
       </div>
     </div>
   );
