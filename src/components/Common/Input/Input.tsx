@@ -14,10 +14,18 @@ export interface InputProps {
 const Input = ({ name, value, onChange, label, placeholder, error, className, type = 'text' }: InputProps) => {
   return (
     <div className={'input-container'}>
-      {label && <div className={'input-label'}>{label}</div>}
+      <div className="label-container">
+        {label && (
+          <label htmlFor={name} className={'input-label'}>
+            {label}
+          </label>
+        )}
+      </div>
+
       <div>
         <input
           className={'input'}
+          id={name}
           name={name}
           value={value}
           onChange={onChange}

@@ -4,12 +4,12 @@ export interface ButtonProps {
   title: string;
   onClick: () => any;
   disabled?: boolean;
-  variant?: 1 | 2;
+  variant?: 'primary' | 'outline';
 }
 
-const Button = ({ title, onClick, disabled = true, variant = 1 }: ButtonProps) => {
+const Button = ({ title, onClick, disabled = false, variant = 'primary' }: ButtonProps) => {
   return (
-    <button className={`button-${variant}`} disabled={disabled} onClick={onClick} type="submit">
+    <button className={` button ${variant}`} disabled={disabled} onClick={onClick} type="submit">
       {title}
     </button>
   );
