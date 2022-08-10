@@ -1,17 +1,9 @@
-interface svgCollectionProps {
-  keys: Function;
-}
-
-const importAll = (svgCollection: svgCollectionProps) => {
-  let svgs = {};
-  // @ts-ignore  //TODO: Add needed logic to remove typescript errors
-  svgCollection.keys().map((item, index) => {
-    // @ts-ignore
+const importAll = (svgCollection: __WebpackModuleApi.RequireContext) => {
+  const svgs = svgCollection.keys().reduce((acc: {}, item: string) => {
     let itemString = item.replace('./', '');
     itemString = itemString.replace('.svg', '');
-    // @ts-ignore
-    svgs[itemString] = svgCollection(item);
-  });
+    return { ...acc, [itemString]: svgCollection(item) };
+  }, {});
   return svgs;
 };
 
