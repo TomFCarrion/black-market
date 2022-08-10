@@ -4,7 +4,7 @@ interface svgCollectionProps {
 
 const importAll = (svgCollection: svgCollectionProps) => {
   let svgs = {};
-  // @ts-ignore  //TODO: Add needed login to remove typescript errors
+  // @ts-ignore  //TODO: Add needed logic to remove typescript errors
   svgCollection.keys().map((item, index) => {
     // @ts-ignore
     let itemString = item.replace('./', '');
