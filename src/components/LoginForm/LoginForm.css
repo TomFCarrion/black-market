@@ -1,19 +1,37 @@
 .loginForm-container {
+  height: 36rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.loginAuth-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 22.5rem;
   height: 26.563rem;
-  background-color:white;
+  background-color: var(--white);;
   border-radius: 8px;
   padding: 2.2rem;
-
+}
+.loginAuth-container > form {
+  width: 100%;
 }
 
-.loginForm-container > form {
-    width: 100%;
+.loginAuth-container > .logo {
+  padding: 1rem 0 2.8rem 0;
 }
 
-.logo {
-    padding: 1rem 0 2.8rem 0;
+.signup-redirect-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 22.5rem;
+  height: 8.125rem;
+  background-color: var(--white);
+  border-radius: .5rem;
+  padding: 0 2.2rem;
 }
