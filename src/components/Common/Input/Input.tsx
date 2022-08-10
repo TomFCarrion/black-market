@@ -1,5 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import './input.css';
+import Icon from '../Icon';
+
 export interface InputProps {
   name: string;
   value?: string;
@@ -46,7 +48,12 @@ const Input = ({
           type={type}
           disabled={disabled}
         />
-        {error && <div>{error}</div>} {/*TODO: add X Icon */}
+        {error && (
+          <div>
+            <Icon />
+            {error}
+          </div>
+        )}
       </div>
     </div>
   );
