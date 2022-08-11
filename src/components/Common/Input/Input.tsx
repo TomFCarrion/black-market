@@ -1,5 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import './input.css';
+import Icon from '../Icon';
+
 export interface InputProps {
   name: string;
   value?: string;
@@ -32,7 +34,12 @@ const Input = ({ name, value, onChange, label, placeholder, error, className, ty
           placeholder={placeholder}
           type={type}
         />
-        {error && <div>{error}</div>}
+        {error && (
+          <div>
+            <Icon />
+            {error}
+          </div>
+        )}
       </div>
     </div>
   );
