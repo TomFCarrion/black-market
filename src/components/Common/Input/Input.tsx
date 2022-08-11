@@ -21,8 +21,7 @@ const Input = ({
   onChange,
   label,
   placeholder,
-  error = 'test',
-  className,
+  error,
   type = 'text',
   isRequired = false,
   disabled = false,
@@ -48,7 +47,12 @@ const Input = ({
           type={type}
           disabled={disabled}
         />
-        {error && <div>{error}</div>} {/*TODO: add X Icon */}
+        {error && (
+          <div className="input-error-label">
+            <Icon /> {error}
+          </div>
+        )}
+        {/*TODO: add X Icon */}
       </div>
     </div>
   );
