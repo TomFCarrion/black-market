@@ -9,7 +9,7 @@ export interface IconProps {
   size?: '16' | '24' | '32' | '40';
 }
 
-const Icon = ({ size, name }: IconProps) => {
+const Icon = ({ size = '24', name = 'error' }: IconProps) => {
   // @ts-ignore  //TODO: Add needed login to remove typescript errors
   return <img src={iconsCollection[name]} width={size} height={size} alt={`${name} Icon`} />;
 };
