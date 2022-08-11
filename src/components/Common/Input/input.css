@@ -1,14 +1,25 @@
 .input-container {
-  padding-bottom: .8rem;
+  padding-bottom: 0.8rem;
 }
 
-.label-container{
-    padding-bottom: .4rem;
-
+.label-container {
+  padding-bottom: 0.4rem;
 }
 .input-label {
   font-size: 1rem;
   font-weight: 400;
+}
+
+.input-error-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding-top: 0.3rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--dark-grey);
 }
 
 .input {
@@ -21,7 +32,29 @@
   line-height: 1.3rem;
 }
 
+.input:disabled {
+  color: var(--dark-grey);
+  background-color: var(--background);
+  border: 0.12rem solid var(--dark-grey);
+}
+
+.input:hover {
+  border: 0.12rem solid var(--hover);
+  color: var(--dark-grey);
+}
+
+.input:focus {
+  outline: 0.12rem dashed var(--focus);
+  color: var(--dark-grey);
+  outline-offset: 0.1rem;
+}
+
+.input:active {
+  outline: 0.12rem solid var(--active);
+  color: var(--dark-grey);
+  outline-offset: 0;
+}
+
 .input-error {
-  color: var(--error);
-  padding-top: 0.5rem;
+  border: 0.12rem solid var(--error);
 }
