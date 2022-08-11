@@ -4,6 +4,7 @@ import './LoginForm.css';
 import Logo from '../Common/Logo';
 import Input from '../Common/Input';
 import Button from '../Common/Button';
+import { loginValidator } from './loginFormValidator';
 
 export interface LoginFormProps {
   customClass?: string;
@@ -27,7 +28,8 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
-          validateOnBlur={false}
+          validationSchema={loginValidator}
+          validateOnBlur={true}
           validateOnChange={false}
           validateOnMount={false}
         >
@@ -63,7 +65,7 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
         </Formik>
       </div>
       <div className="signup-redirect-container">
-        <label>Don’t have an account?</label>
+        <label>Don't have an account?</label>
         <Button onClick={() => console.log('redirect')} title="Sign up" variant={'outline'} />
       </div>
     </div>
