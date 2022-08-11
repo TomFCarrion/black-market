@@ -52,7 +52,6 @@ const Input = ({
             <Icon /> {error}
           </div>
         )}
-        {/*TODO: add X Icon */}
       </div>
     </div>
   );
