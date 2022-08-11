@@ -9,7 +9,6 @@
 
 .floatLeft{
     position: absolute;
-    top: 34%;  
-    left: 0; 
-    transform: translate(34%, -40%);
+    top: 4rem;  
+    left: 8.2rem; 
 }

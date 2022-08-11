@@ -4,6 +4,8 @@ import './LoginForm.css';
 import Logo from '../Common/Logo';
 import Input from '../Common/Input';
 import Button from '../Common/Button';
+import Link from '../Common/Link';
+
 import { loginValidator } from './loginFormValidator';
 
 export interface LoginFormProps {
@@ -35,31 +37,29 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
         >
           {({ values, handleChange, handleSubmit, errors }) => (
             <form onSubmit={handleSubmit} className="form">
-              <div>
-                <Input
-                  name="email"
-                  value={values.email}
-                  error={errors.email}
-                  onChange={handleChange}
-                  placeholder="Type your email"
-                  label="Email"
-                  className="login-form-input"
-                />
-              </div>
-              <div>
-                <Input
-                  name="password"
-                  value={values.password}
-                  error={errors.password}
-                  onChange={handleChange}
-                  type="password"
-                  placeholder="Type your password"
-                  label="Password"
-                  className="login-form-input"
-                />
-              </div>
+              <Input
+                name="email"
+                value={values.email}
+                error={errors.email}
+                onChange={handleChange}
+                placeholder="Type your email"
+                label="Email"
+                className="login-form-input"
+              />
+              <Input
+                name="password"
+                value={values.password}
+                error={errors.password}
+                onChange={handleChange}
+                type="password"
+                placeholder="Type your password"
+                label="Password"
+                className="login-form-input"
+              />
               <Button onClick={handleSubmit} title="Log in" variant={'primary'} />
-              <Button onClick={handleSubmit} title="I forgot my password." variant={'outline'} />
+              <label className="login-form-forgot-password">
+                <Link text="I forgot my password." redirectTo="/" />
+              </label>
             </form>
           )}
         </Formik>
