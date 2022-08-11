@@ -1,0 +1,32 @@
+.primary-link {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--links);
+  text-decoration: none;
+}
+
+.primary-link:hover {
+  text-decoration: underline;
+}
+
+.primary-link:focus {
+  padding: 0.1rem;
+  border: none;
+  border-radius: 0.5rem;
+  outline: 0.12rem dashed var(--focus);
+  outline-offset: 0.1rem;
+}
+
+.primary-link:active {
+  outline: none;
+  color: var(--active);
+}
+
+.primary-link:visited {
+  color: var(--links);
+  text-decoration: none;
+}
+
+.disabled-link {
+  color: var(--dark-grey);
+}
