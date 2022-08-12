@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginForm from '../../components/LoginForm';
+import Background from '../../assets/wallpaper.png';
 import './loginPage.css';
 
 const LoginPage = () => {
@@ -7,9 +8,13 @@ const LoginPage = () => {
     console.log('Login request: Work in progress');
   };
 
+  const containerStyle = {
+    backgroundImage: `url(${Background})`,
+  };
+
   return (
     <>
-      <div className="container">
+      <div style={containerStyle} className="login-page">
         <LoginForm onSubmit={loginRequest} customClass={'floatLeft'} />
       </div>
     </>

@@ -1,13 +1,44 @@
-.loginForm-container{    
-    width: 360px;
-    height: 425px;
-    color: red;
-    background-color: white;
-    border-radius: 8px;
-
- 
+.loginForm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.logo{
-    width: 173px;
+.loginAuth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 22.5rem;
+  /* height: 26.563rem; */
+  background-color: var(--white);;
+  border-radius: 8px;
+  padding: 2.2rem;
+  margin-bottom: 2.2rem;
+
+}
+.loginAuth-container > form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginAuth-container > .logo {
+  padding: 1rem 0 2.8rem 0;
+}
+
+.signup-redirect-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 22.5rem;
+  height: 8.125rem;
+  background-color: var(--white);
+  border-radius: .5rem;
+  padding: 0 2.2rem;
+}
+
+.login-form-forgot-password{
+  text-align: ;
 }
