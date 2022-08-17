@@ -1,12 +1,12 @@
 import React from 'react';
-import LoginForm from '../../components/LoginForm';
+import SignUpForm from '../../components/SignUpForm';
 import Background from '../../assets/wallpaper.png';
 import { useNavigate } from 'react-router-dom';
-import './loginPage.css';
+import './SignUpPage.css';
 
-const LoginPage = () => {
+const SignUpPage = () => {
   const navigate = useNavigate();
-  const loginRequest = () => navigate('home');
+  const singUpRequest = () => navigate('login');
 
   const containerStyle = {
     backgroundImage: `url(${Background})`,
@@ -15,10 +15,10 @@ const LoginPage = () => {
   return (
     <>
       <div style={containerStyle} className="login-page">
-        <LoginForm onSubmit={loginRequest} customClass={'floatLeft'} />
+        <SignUpForm onSubmit={singUpRequest} customClass={'floatLeft'} />
       </div>
     </>
   );
 };
 
-export default LoginPage;
+export default SignUpPage;
