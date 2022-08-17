@@ -1,0 +1,14 @@
+
+.login-page{
+    background-image: url('../../assets/wallpaper.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+    overflow: hidden;
+}
+
+.floatLeft{
+    position: absolute;
+    top: 4rem;  
+    left: 8.2rem; 
+}

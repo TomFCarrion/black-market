@@ -1,27 +1,27 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { useNavigate } from 'react-router-dom';
-import './LoginForm.css';
+import './signUpForm.css';
 import Logo from '../Common/Logo';
 import Input from '../Common/Input';
 import Button from '../Common/Button';
 import Link from '../Common/Link';
 
-import { loginValidator } from './loginFormValidator';
+import { signUpValidator } from './SignUpFormValidator';
 
-export interface LoginFormProps {
+export interface SignUpFormProps {
   customClass?: string;
-  onSubmit: (values: LoginFormFields) => void;
+  onSubmit: (values: SignUpFormFields) => void;
 }
-export interface LoginFormFields {
+export interface SignUpFormFields {
   email: string;
+  fullname: string;
   password: string;
 }
 
-const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
-  const navigate = useNavigate();
-  const initialValues: LoginFormFields = {
+const SignUpForm = ({ onSubmit, customClass }: SignUpFormProps) => {
+  const initialValues: SignUpFormFields = {
     email: '',
+    fullname: '',
     password: '',
   };
 
@@ -29,10 +29,11 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
     <div className={`${customClass} loginForm-container`}>
       <div className="loginAuth-container">
         <Logo customClass="logo" size="l" />
+
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
-          validationSchema={loginValidator}
+          validationSchema={signUpValidator}
           validateOnBlur={true}
           validateOnChange={false}
           validateOnMount={false}
@@ -49,6 +50,15 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
                 className="login-form-input"
               />
               <Input
+                name="fullname"
+                value={values.fullname}
+                error={errors.fullname}
+                onChange={handleChange}
+                placeholder="Type your full name"
+                label="Full name"
+                className="login-form-input"
+              />
+              <Input
                 name="password"
                 value={values.password}
                 error={errors.password}
@@ -58,20 +68,20 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
                 label="Password"
                 className="login-form-input"
               />
-              <Button onClick={handleSubmit} title="Log in" variant={'primary'} />
-              <label className="login-form-forgot-password">
-                <Link text="I forgot my password." redirectTo="/" />
-              </label>
+              <Button onClick={handleSubmit} title="Sign Up" variant={'primary'} />
+              <p className="login-form-forgot-password">
+                By signing up, you accept the <Link text="Data Policy" redirectTo="/" /> and the{' '}
+                <Link text="Cookies Policy." redirectTo="/" />
+              </p>
+              <p className="login-form-forgot-password">
+                Already have an account? <Link text="Log in" redirectTo="/" />
+              </p>
             </form>
           )}
         </Formik>
-      </div>
-      <div className="signup-redirect-container">
-        <label>Don't have an account?</label>
-        <Button onClick={() => navigate('singup')} title="Sign up" variant={'outline'} />
       </div>
     </div>
   );
 };
 
-export default LoginForm;
+export default SignUpForm;
