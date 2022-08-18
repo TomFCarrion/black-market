@@ -4,14 +4,17 @@ import './Icon.css';
 import { getSvgs } from './iconHelpers';
 
 const iconsCollection = getSvgs();
+
+type avaliableIcons = typeof iconsCollection.avaliableIcons[number];
+
 export interface IconProps {
-  name?: 'error' | 'visibility-off' | 'visibility-on'; //TODO: Destructure iconsCollection to support all available Icons, currently only supporting icons needed for log in
+  name?: avaliableIcons;
   size?: '16' | '24' | '32' | '40';
 }
 
 const Icon = ({ size = '24', name = 'error' }: IconProps) => {
   // @ts-ignore  //TODO: Add needed login to remove typescript errors
-  return <img src={iconsCollection[name]} width={size} height={size} alt={`${name} Icon`} />;
+  return <img src={iconsCollection.svgs[name]} width={size} height={size} alt={`${name} Icon`} />;
 };
 
 Icon.defaultProps = {
