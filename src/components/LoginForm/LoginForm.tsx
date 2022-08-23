@@ -1,29 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import './LoginForm.css';
+import useAuth from '../../contexts/useAuth';
 import Logo from '../Common/Logo';
 import Input from '../Common/Input';
 import Button from '../Common/Button';
 import Link from '../Common/Link';
+import './LoginForm.css';
 
 import { loginValidator } from './loginFormValidator';
 
 export interface LoginFormProps {
   customClass?: string;
-  onSubmit: (values: LoginFormFields) => void;
 }
 export interface LoginFormFields {
   email: string;
   password: string;
 }
 
-const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
+const LoginForm = ({ customClass }: LoginFormProps) => {
+  const { login, loading, error } = useAuth(); //loading will be used when the spinner gets implemented
   const navigate = useNavigate();
   const initialValues: LoginFormFields = {
     email: '',
     password: '',
   };
+
+  const handleSubmit = (values: LoginFormFields) => login(values.email, values.password);
 
   return (
     <div className={`${customClass} loginForm-container`}>
@@ -31,7 +34,7 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
         <Logo customClass="logo" size="l" />
         <Formik
           initialValues={initialValues}
-          onSubmit={onSubmit}
+          onSubmit={(values: LoginFormFields) => handleSubmit(values)}
           validationSchema={loginValidator}
           validateOnBlur={true}
           validateOnChange={false}
@@ -59,6 +62,7 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
                 className="login-form-input"
               />
               <Button onClick={handleSubmit} title="Log in" variant={'primary'} />
+              {error && <label className="unmatch-error"> Your email or password are incorrect.</label>}
               <label className="login-form-forgot-password">
                 <Link text="I forgot my password." redirectTo="/" />
               </label>

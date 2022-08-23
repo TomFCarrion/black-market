@@ -1,6 +1,6 @@
 const routesPaths = {
-  login: '/',
-  index: '/home',
+  login: '/login',
+  index: '/',
   singup: '/singup',
 };
 

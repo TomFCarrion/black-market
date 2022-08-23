@@ -2,6 +2,7 @@ import React from 'react';
 import routesPaths from './paths';
 import LoginPage from '../pages/LoginPage';
 import SignUpPage from '../pages/SignUpPage';
+import HomePage from '../pages/HomePage';
 const routes = [
   {
     key: 'login',
@@ -12,7 +13,7 @@ const routes = [
   {
     key: 'home',
     path: routesPaths.index,
-    element: <h1>home</h1>, //HomePage it's not created yet :)
+    element: <HomePage />,
     isPrivate: true,
   },
   {

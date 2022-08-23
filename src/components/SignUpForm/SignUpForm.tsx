@@ -5,12 +5,12 @@ import Logo from '../Common/Logo';
 import Input from '../Common/Input';
 import Button from '../Common/Button';
 import Link from '../Common/Link';
+import useAuth from '../../contexts/useAuth';
 
 import { signUpValidator } from './SignUpFormValidator';
 
 export interface SignUpFormProps {
   customClass?: string;
-  onSubmit: (values: SignUpFormFields) => void;
 }
 export interface SignUpFormFields {
   email: string;
@@ -18,12 +18,15 @@ export interface SignUpFormFields {
   password: string;
 }
 
-const SignUpForm = ({ onSubmit, customClass }: SignUpFormProps) => {
+const SignUpForm = ({ customClass }: SignUpFormProps) => {
+  const { signUp, loading } = useAuth(); //loading will be used when the spinner gets implemented
+
   const initialValues: SignUpFormFields = {
     email: '',
     fullname: '',
     password: '',
   };
+  const handleSubmit = (values: SignUpFormFields) => signUp(values.email, values.fullname, values.password);
 
   return (
     <div className={`${customClass} loginForm-container`}>
@@ -32,7 +35,7 @@ const SignUpForm = ({ onSubmit, customClass }: SignUpFormProps) => {
 
         <Formik
           initialValues={initialValues}
-          onSubmit={onSubmit}
+          onSubmit={(values) => handleSubmit(values)}
           validationSchema={signUpValidator}
           validateOnBlur={true}
           validateOnChange={false}
@@ -74,7 +77,7 @@ const SignUpForm = ({ onSubmit, customClass }: SignUpFormProps) => {
                 <Link text="Cookies Policy." redirectTo="/" />
               </p>
               <p className="login-form-forgot-password">
-                Already have an account? <Link text="Log in" redirectTo="/" />
+                Already have an account? <Link text="Log in" redirectTo="/login" />
               </p>
             </form>
           )}
