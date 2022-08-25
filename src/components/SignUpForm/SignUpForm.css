@@ -17,7 +17,6 @@
   padding: 2.2rem;
   margin-bottom: 2.2rem;
 }
-
 .loginAuth-container > form {
   width: 100%;
   display: flex;
@@ -27,13 +26,6 @@
 
 .loginAuth-container > .logo {
   padding: 1rem 0 2.8rem 0;
-}
-
-.loginAuth-container > form > .unmatch-error {
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--error);
-  padding-bottom: 1rem;
 }
 
 .signup-redirect-container {
@@ -46,4 +38,8 @@
   background-color: var(--white);
   border-radius: 0.5rem;
   padding: 0 2.2rem;
+}
+
+.login-form-forgot-password {
+  text-align: center;
 }
