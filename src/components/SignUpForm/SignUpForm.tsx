@@ -5,37 +5,35 @@ import Logo from '../Common/Logo';
 import Input from '../Common/Input';
 import Button from '../Common/Button';
 import Link from '../Common/Link';
-import useAuth from '../../contexts/useAuth';
 
 import { signUpValidator } from './SignUpFormValidator';
 
-export interface SignUpFormProps {
-  customClass?: string;
-}
 export interface SignUpFormFields {
   email: string;
   fullname: string;
   password: string;
 }
+export interface SignUpFormProps {
+  isLoading: boolean;
+  error: any;
+  handleSubmit: (values: SignUpFormFields) => void;
+}
 
-const SignUpForm = ({ customClass }: SignUpFormProps) => {
-  const { signUp, loading } = useAuth(); //loading will be used when the spinner gets implemented
-
+const SignUpForm = ({ handleSubmit, isLoading, error }: SignUpFormProps) => {
   const initialValues: SignUpFormFields = {
     email: '',
     fullname: '',
     password: '',
   };
-  const handleSubmit = (values: SignUpFormFields) => signUp(values.email, values.fullname, values.password);
 
   return (
-    <div className={`${customClass} loginForm-container`}>
+    <div className="loginForm-container">
       <div className="loginAuth-container">
         <Logo customClass="logo" size="l" />
 
         <Formik
           initialValues={initialValues}
-          onSubmit={(values) => handleSubmit(values)}
+          onSubmit={(values: SignUpFormFields) => handleSubmit(values)}
           validationSchema={signUpValidator}
           validateOnBlur={true}
           validateOnChange={false}
@@ -72,6 +70,7 @@ const SignUpForm = ({ customClass }: SignUpFormProps) => {
                 className="login-form-input"
               />
               <Button onClick={handleSubmit} title="Sign Up" variant={'primary'} />
+              {error && <label className="unmatch-error">Ya regsitrarmos esta dirección de correo electrónico</label>}
               <p className="login-form-forgot-password">
                 By signing up, you accept the <Link text="Data Policy" redirectTo="/" /> and the{' '}
                 <Link text="Cookies Policy." redirectTo="/" />

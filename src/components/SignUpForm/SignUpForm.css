@@ -1,4 +1,7 @@
 .loginForm-container {
+  position: absolute;
+  top: 1rem;
+  left: 8.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,12 +12,10 @@
   flex-direction: column;
   align-items: center;
   width: 22.5rem;
-  /* height: 26.563rem; */
-  background-color: var(--white);;
+  background-color: var(--white);
   border-radius: 8px;
   padding: 2.2rem;
   margin-bottom: 2.2rem;
-
 }
 .loginAuth-container > form {
   width: 100%;
@@ -35,10 +36,10 @@
   width: 22.5rem;
   height: 8.125rem;
   background-color: var(--white);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   padding: 0 2.2rem;
 }
 
-.login-form-forgot-password{
+.login-form-forgot-password {
   text-align: center;
 }

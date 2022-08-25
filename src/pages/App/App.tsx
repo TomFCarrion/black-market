@@ -5,6 +5,13 @@ import { AuthProvider } from '../../contexts/useAuth';
 
 import routes from '../../routes';
 
+interface Route {
+  key: string;
+  path: string;
+  element: JSX.Element;
+  isPrivate: boolean;
+}
+
 const App = () => (
   <Router>
     <AuthProvider>

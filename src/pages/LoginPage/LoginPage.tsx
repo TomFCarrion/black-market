@@ -3,16 +3,24 @@ import LoginForm from '../../components/LoginForm';
 import Background from '../../assets/wallpaper.png';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../contexts/useAuth';
+
 import './loginPage.css';
+
+interface LoginFormFields {
+  email: string;
+  password: string;
+}
 
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, login, loading, error } = useAuth();
+
+  const handleSubmit = (values: LoginFormFields) => login(values.email, values.password);
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('home');
+      navigate('/');
     }
   }, [isAuthenticated]);
 
@@ -23,7 +31,7 @@ const LoginPage = () => {
   return (
     <>
       <div style={containerStyle} className="login-page">
-        <LoginForm customClass={'floatLeft'} />
+        <LoginForm handleSubmit={handleSubmit} isLoading={loading} error={error} />
       </div>
     </>
   );

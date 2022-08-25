@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../../contexts/useAuth';
 import Logo from '../Common/Logo';
 import Input from '../Common/Input';
 import Button from '../Common/Button';
@@ -11,25 +10,24 @@ import './LoginForm.css';
 import { loginValidator } from './loginFormValidator';
 
 export interface LoginFormProps {
-  customClass?: string;
+  isLoading: boolean;
+  error: any;
+  handleSubmit: (values: LoginFormFields) => void;
 }
 export interface LoginFormFields {
   email: string;
   password: string;
 }
 
-const LoginForm = ({ customClass }: LoginFormProps) => {
-  const { login, loading, error } = useAuth(); //loading will be used when the spinner gets implemented
+const LoginForm = ({ handleSubmit, isLoading, error }: LoginFormProps) => {
   const navigate = useNavigate();
   const initialValues: LoginFormFields = {
     email: '',
     password: '',
   };
 
-  const handleSubmit = (values: LoginFormFields) => login(values.email, values.password);
-
   return (
-    <div className={`${customClass} loginForm-container`}>
+    <div className="loginForm-container">
       <div className="loginAuth-container">
         <Logo customClass="logo" size="l" />
         <Formik
@@ -72,7 +70,7 @@ const LoginForm = ({ customClass }: LoginFormProps) => {
       </div>
       <div className="signup-redirect-container">
         <label>Don't have an account?</label>
-        <Button onClick={() => navigate('singup')} title="Sign up" variant={'outline'} />
+        <Button onClick={() => navigate('../singup', { replace: true })} title="Sign up" variant={'outline'} />
       </div>
     </div>
   );

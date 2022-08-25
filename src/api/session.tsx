@@ -1,4 +1,5 @@
 import client from './httpClient/index';
+import { auth } from './endpoints';
 
 interface User {
   email: string;
@@ -6,20 +7,24 @@ interface User {
   name?: string;
 }
 
-const login = (User: { email: string; password: string }): Promise<User> => {
-  return client.post('/auth/sign_in', JSON.stringify({ user: { ...User } }));
-};
-
-const signUp = (User: { email: string; name: string; password: string }): Promise<User> => {
-  return client.post('/auth', JSON.stringify({ user: { ...User } }));
-};
-
-export async function logout(sessionData: any) {
-  const config = { headers: { ...sessionData } };
-  const response = await client.delete('/auth/sign_out', config);
-
-  return response.data.data;
+interface SessionDataType {
+  'access-token': string;
+  client: string;
+  expiry: number;
+  uid: string;
 }
+
+const login = async (user: Pick<User, 'email' | 'password'>): Promise<User> => {
+  return await client.post(auth.LOG_IN, JSON.stringify({ user: { ...user } }));
+};
+const signUp = async (user: Pick<User, 'email' | 'name' | 'password'>): Promise<User> => {
+  return await client.post(auth.SIGN_UP, JSON.stringify({ user: { ...user } }));
+};
+
+const logout = async (sessionData: SessionDataType) => {
+  const config = { headers: { ...sessionData } };
+  await client.delete(auth.LOG_OUT, config);
+};
 
 export const sessionsApi = {
   login,
