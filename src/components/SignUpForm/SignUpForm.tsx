@@ -8,17 +8,18 @@ import Link from '../Common/Link';
 
 import { signUpValidator } from './SignUpFormValidator';
 
-export interface SignUpFormProps {
-  customClass?: string;
-  onSubmit: (values: SignUpFormFields) => void;
-}
 export interface SignUpFormFields {
   email: string;
   fullname: string;
   password: string;
 }
+export interface SignUpFormProps {
+  isLoading: boolean;
+  error: any;
+  handleSubmit: (values: SignUpFormFields) => void;
+}
 
-const SignUpForm = ({ onSubmit, customClass }: SignUpFormProps) => {
+const SignUpForm = ({ handleSubmit, isLoading, error }: SignUpFormProps) => {
   const initialValues: SignUpFormFields = {
     email: '',
     fullname: '',
@@ -26,13 +27,13 @@ const SignUpForm = ({ onSubmit, customClass }: SignUpFormProps) => {
   };
 
   return (
-    <div className={`${customClass} loginForm-container`}>
+    <div className="loginForm-container">
       <div className="loginAuth-container">
         <Logo customClass="logo" size="l" />
 
         <Formik
           initialValues={initialValues}
-          onSubmit={onSubmit}
+          onSubmit={(values: SignUpFormFields) => handleSubmit(values)}
           validationSchema={signUpValidator}
           validateOnBlur={true}
           validateOnChange={false}
@@ -69,12 +70,13 @@ const SignUpForm = ({ onSubmit, customClass }: SignUpFormProps) => {
                 className="login-form-input"
               />
               <Button onClick={handleSubmit} title="Sign Up" variant={'primary'} />
+              {error && <label className="unmatch-error">Ya regsitrarmos esta dirección de correo electrónico</label>}
               <p className="login-form-forgot-password">
                 By signing up, you accept the <Link text="Data Policy" redirectTo="/" /> and the{' '}
                 <Link text="Cookies Policy." redirectTo="/" />
               </p>
               <p className="login-form-forgot-password">
-                Already have an account? <Link text="Log in" redirectTo="/" />
+                Already have an account? <Link text="Log in" redirectTo="/login" />
               </p>
             </form>
           )}

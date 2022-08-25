@@ -1,24 +1,26 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import './LoginForm.css';
+import routesPaths from '../../routes/paths';
 import Logo from '../Common/Logo';
 import Input from '../Common/Input';
 import Button from '../Common/Button';
 import Link from '../Common/Link';
+import './LoginForm.css';
 
 import { loginValidator } from './loginFormValidator';
 
 export interface LoginFormProps {
-  customClass?: string;
-  onSubmit: (values: LoginFormFields) => void;
+  isLoading: boolean;
+  error: any;
+  handleSubmit: (values: LoginFormFields) => void;
 }
 export interface LoginFormFields {
   email: string;
   password: string;
 }
 
-const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
+const LoginForm = ({ handleSubmit, isLoading, error }: LoginFormProps) => {
   const navigate = useNavigate();
   const initialValues: LoginFormFields = {
     email: '',
@@ -26,12 +28,12 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
   };
 
   return (
-    <div className={`${customClass} loginForm-container`}>
+    <div className="loginForm-container">
       <div className="loginAuth-container">
         <Logo customClass="logo" size="l" />
         <Formik
           initialValues={initialValues}
-          onSubmit={onSubmit}
+          onSubmit={(values: LoginFormFields) => handleSubmit(values)}
           validationSchema={loginValidator}
           validateOnBlur={true}
           validateOnChange={false}
@@ -59,6 +61,7 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
                 className="login-form-input"
               />
               <Button onClick={handleSubmit} title="Log in" variant={'primary'} />
+              {error && <label className="unmatch-error"> Your email or password are incorrect.</label>}
               <label className="login-form-forgot-password">
                 <Link text="I forgot my password." redirectTo="/" />
               </label>
@@ -68,7 +71,7 @@ const LoginForm = ({ onSubmit, customClass }: LoginFormProps) => {
       </div>
       <div className="signup-redirect-container">
         <label>Don't have an account?</label>
-        <Button onClick={() => navigate('singup')} title="Sign up" variant={'outline'} />
+        <Button onClick={() => navigate(routesPaths.singup, { replace: true })} title="Sign up" variant={'outline'} />
       </div>
     </div>
   );

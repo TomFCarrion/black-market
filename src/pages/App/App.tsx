@@ -1,24 +1,31 @@
 import React from 'react';
 import RequireAuth from '../../components/Routes/RequireAuth';
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
-import AuthProvider from '../../contexts/auth-context';
+import { AuthProvider } from '../../contexts/useAuth';
+
 import routes from '../../routes';
 
-window.console.log(routes);
+interface Route {
+  key: string;
+  path: string;
+  element: JSX.Element;
+  isPrivate: boolean;
+}
+
 const App = () => (
-  <AuthProvider>
-    <Router>
+  <Router>
+    <AuthProvider>
       <Routes>
-        {routes.map((route: any) => (
+        {routes.map((route: Route) => (
           <Route
             key={route.key}
             path={route.path}
-            element={route.private ? <RequireAuth>{route.element}</RequireAuth> : route.element}
+            element={route.isPrivate ? <RequireAuth>{route.element}</RequireAuth> : route.element}
           />
         ))}
       </Routes>
-    </Router>
-  </AuthProvider>
+    </AuthProvider>
+  </Router>
 );
 
 export default App;
