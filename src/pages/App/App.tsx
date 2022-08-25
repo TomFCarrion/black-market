@@ -16,7 +16,7 @@ const App = () => (
   <Router>
     <AuthProvider>
       <Routes>
-        {routes.map((route: any) => (
+        {routes.map((route: Route) => (
           <Route
             key={route.key}
             path={route.path}

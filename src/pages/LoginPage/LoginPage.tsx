@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import LoginForm from '../../components/LoginForm';
 import Background from '../../assets/wallpaper.png';
 import { useNavigate } from 'react-router-dom';
+import routesPaths from '../../routes/paths';
 import useAuth from '../../contexts/useAuth';
 
 import './loginPage.css';
@@ -20,7 +21,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/');
+      navigate(routesPaths.index);
     }
   }, [isAuthenticated]);
 

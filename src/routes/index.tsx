@@ -5,19 +5,19 @@ import SignUpPage from '../pages/SignUpPage';
 import HomePage from '../pages/HomePage';
 const routes = [
   {
-    key: 'login',
+    key: routesPaths.login,
     path: routesPaths.login,
     element: <LoginPage />,
     isPrivate: false,
   },
   {
-    key: 'home',
+    key: routesPaths.index,
     path: routesPaths.index,
     element: <HomePage />,
     isPrivate: true,
   },
   {
-    key: 'singup',
+    key: routesPaths.singup,
     path: routesPaths.singup,
     element: <SignUpPage />,
     isPrivate: false,

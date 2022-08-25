@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import routesPaths from '../../routes/paths';
 import Logo from '../Common/Logo';
 import Input from '../Common/Input';
 import Button from '../Common/Button';
@@ -70,7 +71,7 @@ const LoginForm = ({ handleSubmit, isLoading, error }: LoginFormProps) => {
       </div>
       <div className="signup-redirect-container">
         <label>Don't have an account?</label>
-        <Button onClick={() => navigate('../singup', { replace: true })} title="Sign up" variant={'outline'} />
+        <Button onClick={() => navigate(routesPaths.singup, { replace: true })} title="Sign up" variant={'outline'} />
       </div>
     </div>
   );

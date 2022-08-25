@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import routesPaths from '../routes/paths';
 import { sessionsApi } from '../api/session';
 
 interface SessionDataType {
@@ -70,7 +71,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }): JSX.Element
         setIsAuthenticated(true);
         setSessionData(parseSessionData(data));
 
-        navigate('/', { replace: true });
+        navigate(routesPaths.index, { replace: true });
       })
       .catch((error: any) => setError(error))
       .finally(() => setLoading(false));
@@ -82,7 +83,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }): JSX.Element
     await sessionsApi
       .signUp({ email, name, password })
       .then(() => {
-        navigate('login', { replace: true });
+        navigate(routesPaths.login, { replace: true });
       })
       .catch((error) => setError(error.response.data.errors))
       .finally(() => setLoading(false));
@@ -92,7 +93,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }): JSX.Element
     await sessionsApi.logout(sessionData).then(() => {
       setSessionData({} as SessionDataType); //emptying array but keeping shape
       setIsAuthenticated(false);
-      navigate('login', { replace: true });
+      navigate(routesPaths.login, { replace: true });
       localStorage.removeItem('headers');
     });
   };
