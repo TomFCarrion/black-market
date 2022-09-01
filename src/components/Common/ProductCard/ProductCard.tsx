@@ -20,10 +20,10 @@ const ProductCard = ({
     <div className="productCard" tabIndex={0}>
       <img className="productCard-image" src={productImg} alt={`${label} product image`} />
       <div className="productCard-info">
-        <span className="productCard-info-firstLine">
+        <span className="productCard-info-section">
           <p className="productCard-priceTag">${price}</p> <div className={`productCard-tag-${tag}`}>{tag}</div>
         </span>
-        <span className="productCard-info-firstLine">
+        <span className="productCard-info-section">
           <h2 className="productCard-label">{label}</h2>
           <Icon name="favorite-linear" />
         </span>
